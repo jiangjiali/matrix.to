@@ -16,7 +16,8 @@ jobs:
           node-version: 16
       - name: 资源打包
         run: |
-          run: yarn install
+          npm install yarn
+          yarn install
           cd node_modules/ && tar cvfz ../node_modules.tgz ./ && cd -
       - name: 上传资源
         uses: actions/upload-artifact@v3
