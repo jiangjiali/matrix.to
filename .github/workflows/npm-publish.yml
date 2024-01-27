@@ -22,6 +22,6 @@ jobs:
       - name: 上传资源
         uses: actions/upload-artifact@v3
         with:
-          name: gradle-cache
+          name: node_modules
           path:  |
             node_modules.tgz
