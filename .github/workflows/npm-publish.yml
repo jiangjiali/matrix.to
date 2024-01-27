@@ -1,0 +1,26 @@
+name: 资源打包
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validation:
+    name: "资源打包"
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+      - uses: actions/checkout@v3
+      - name: 设置node版本
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: 资源打包
+        run: |
+          run: yarn install
+          cd node_modules/ && tar cvfz ../node_modules.tgz ./ && cd -
+      - name: 上传资源
+        uses: actions/upload-artifact@v3
+        with:
+          name: gradle-cache
+          path:  |
+            node_modules.tgz
